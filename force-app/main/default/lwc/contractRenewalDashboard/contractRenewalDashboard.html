@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Renovacoes de Contrato" icon-name="standard:contract">
+        <div class="slds-p-horizontal_small">
+            <template lwc:if={hasContracts}>
+                <lightning-datatable
+                    key-field="contractId"
+                    data={contracts}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <template lwc:if={error}>
+                <div class="slds-text-color_error slds-p-around_small">
+                    Erro ao carregar contratos.
+                </div>
+            </template>
+
+            <template lwc:if={hasContracts}></template>
+            <template lwc:else>
+                <template lwc:if={error}></template>
+                <template lwc:else>
+                    <div class="slds-p-around_small slds-text-color_weak">
+                        Nenhum contrato a vencer nos proximos 90 dias.
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

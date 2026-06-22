@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <!-- APEX - Classes, Triggers, Test Classes -->
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+
+    <!-- LIGHTNING WEB COMPONENTS -->
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+
+    <!-- AURA COMPONENTS -->
+    <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+
+    <!-- CUSTOM OBJECTS & FIELDS -->
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomObjectTranslation</name>
+    </types>
+
+    <!-- FLOWS & PROCESS BUILDER -->
+    <types>
+        <members>*</members>
+        <name>FlowDefinition</name>
+    </types>
+
+    <!-- VALIDATION RULES & BUSINESS RULES -->
+    <types>
+        <members>*</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>WorkflowRule</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>WorkflowTask</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>WorkflowAlert</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>WorkflowOutboundMessage</name>
+    </types>
+
+    <!-- PAGE LAYOUTS & RECORD TYPES -->
+
+    <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+
+    <!-- SECURITY & SHARING -->
+    <types>
+        <members>*</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PermissionSetGroup</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>SharingRules</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Role</name>
+    </types>
+
+    <!-- CUSTOM METADATA & SETTINGS -->
+    <types>
+        <members>*</members>
+        <name>CustomMetadata</name>
+    </types>
+
+    <!-- STATIC RESOURCES & LABELS -->
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomLabels</name>
+    </types>
+
+    <!-- EMAIL & COMMUNICATION -->
+    <types>
+        <members>*</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomNotificationType</name>
+    </types>
+
+    <!-- AUTOMATION & INTEGRATIONS -->
+    <types>
+        <members>*</members>
+        <name>AutoResponseRule</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>AssignmentRules</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>EscalationRules</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ExternalDataSource</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ConnectedApp</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>NamedCredential</name>
+    </types>
+
+    <!-- GLOBAL SETTINGS -->
+    <types>
+        <members>*</members>
+        <name>Settings</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StandardValueSet</name>
+    </types>
+
+    <!-- DOCUMENT MANAGEMENT -->
+    <types>
+        <members>*</members>
+        <name>Document</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ContentAsset</name>
+    </types>
+
+    <!-- LIST VIEWS & FILTERS -->
+    <types>
+        <members>*</members>
+        <name>ListView</name>
+    </types>
+
+    <!-- QUICK ACTIONS & BUTTONS -->
+    <types>
+        <members>*</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ActionLinkGroupTemplate</name>
+    </types>
+
+    <!-- PLATFORM EVENTS & MESSAGING -->
+    <types>
+        <members>*</members>
+        <name>PlatformEventChannelMember</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PlatformEventChannel</name>
+    </types>
+
+    <!-- SITES & WEB CONTENT -->
+    <types>
+        <members>*</members>
+        <name>Community</name>
+    </types>
+
+    <!-- APPROVAL PROCESSES -->
+    <types>
+        <members>*</members>
+        <name>ApprovalProcess</name>
+    </types>
+
+    <!-- CHATTER & COLLABORATION -->
+    <types>
+        <members>*</members>
+        <name>ChatterExtension</name>
+    </types>
+
+    <!-- QUEUES & GROUPS -->
+    <types>
+        <members>*</members>
+        <name>Group</name>
+    </types>
+
+    <version>66.0</version>
+</Package>

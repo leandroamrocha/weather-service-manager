@@ -1,0 +1,16 @@
+.sla-badge {
+    font-weight: 700;
+    padding: 4px 10px;
+}
+.sla-breached {
+    background-color: #ba0517;
+    color: #ffffff;
+}
+.sla-atrisk {
+    background-color: #fe9339;
+    color: #ffffff;
+}
+.sla-ontrack {
+    background-color: #2e844a;
+    color: #ffffff;
+}

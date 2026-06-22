@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SLA_Status_Live__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(SLA_Target__c),
+  &quot;No SLA&quot;,
+  IF(
+    NOW() &gt; SLA_Target__c,
+    &quot;Breached&quot;,
+    IF(
+      (SLA_Target__c - NOW()) &lt;= ((SLA_Target__c - CreatedDate) * 0.25),
+      &quot;At Risk&quot;,
+      &quot;On Track&quot;
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>SLA Status Live</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

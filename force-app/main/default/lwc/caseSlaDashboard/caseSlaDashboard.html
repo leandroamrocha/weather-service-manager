@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Monitor de SLA de Casos" icon-name="standard:case">
+        <div class="slds-p-horizontal_small">
+            <template lwc:if={hasCases}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th scope="col"><div class="slds-truncate">Caso</div></th>
+                            <th scope="col"><div class="slds-truncate">Conta</div></th>
+                            <th scope="col"><div class="slds-truncate">Assunto</div></th>
+                            <th scope="col"><div class="slds-truncate">Score</div></th>
+                            <th scope="col"><div class="slds-truncate">SLA Status</div></th>
+                            <th scope="col"><div class="slds-truncate">Escalado</div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={cases} for:item="c">
+                            <tr key={c.caseId} class="slds-hint-parent">
+                                <td><div class="slds-truncate">{c.caseNumber}</div></td>
+                                <td><div class="slds-truncate">{c.accountName}</div></td>
+                                <td><div class="slds-truncate" title={c.subject}>{c.subject}</div></td>
+                                <td><div class="slds-truncate">{c.priorityScore}</div></td>
+                                <td>
+                                    <span class={c.badgeClass}>{c.slaStatusLive}</span>
+                                </td>
+                                <td>
+                                    <template lwc:if={c.isEscalated}>
+                                        <lightning-icon icon-name="utility:warning"
+                                            size="x-small" variant="warning"
+                                            alternative-text="Escalado"></lightning-icon>
+                                    </template>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+
+            <template lwc:if={error}>
+                <div class="slds-text-color_error slds-p-around_small">
+                    Erro ao carregar casos.
+                </div>
+            </template>
+
+            <template lwc:if={hasCases}></template>
+            <template lwc:else>
+                <template lwc:if={error}></template>
+                <template lwc:else>
+                    <div class="slds-p-around_small slds-text-color_weak">
+                        Nenhum caso aberto com SLA definido.
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
