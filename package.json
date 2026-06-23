@@ -1,0 +1,21 @@
+{
+  "name": "weather-service-manager",
+  "version": "1.0.0",
+  "description": "A Service Cloud application that enriches field-service Cases with live weather forecasts and flags visits at risk of bad weather, so dispatchers can reschedule before a technician is sent into a storm.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandroamrocha/weather-service-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/leandroamrocha/weather-service-manager/issues"
+  },
+  "homepage": "https://github.com/leandroamrocha/weather-service-manager#readme"
+}
