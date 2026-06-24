@@ -56,12 +56,10 @@ public with sharing class WeatherService {
     
     public static Decimal[] getCoordinates(String city) {
         
-        // 1. valida a entrada
         if (String.isBlank(city)) {
             throw new WeatherException('City is required.');
         }
         
-        // 2. monta a requisição
         HttpRequest req = new HttpRequest();
         req.setMethod('GET');
         req.setTimeout(20000);
@@ -71,13 +69,11 @@ public with sharing class WeatherService {
             + '&count=1&language=pt&format=json'
             );
         
-        // 3. dispara e checa o status
         HttpResponse res = new Http().send(req);
         if (res.getStatusCode() != 200) {
             throw new WeatherException('Geocoding failed: ' + res.getStatusCode());
         }
         
-        // 4. faz o parse e extrai lat/lon
         Map<String, Object> body = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
         List<Object> results = (List<Object>) body.get('results');
         if (results == null || results.isEmpty()) {
@@ -87,8 +83,43 @@ public with sharing class WeatherService {
         Decimal lat = (Decimal) first.get('latitude');
         Decimal lon = (Decimal) first.get('longitude');
         
-        // 5. devolve os dois valores num array
         return new Decimal[]{ lat, lon };
+    }
+    
+    @TestVisible
+    private static Forecast parseForecast(String jsonBody, Decimal lat, Decimal lon, Date targetDate) {
+        
+        Map<String, Object> body = (Map<String, Object>) JSON.deserializeUntyped(jsonBody);
+        Map<String, Object> daily = (Map<String, Object>) body.get('daily');
+        List<Object> times    = (List<Object>) daily.get('time');
+        List<Object> maxTemps = (List<Object>) daily.get('temperature_2m_max');
+        List<Object> minTemps = (List<Object>) daily.get('temperature_2m_min');
+        List<Object> precips  = (List<Object>) daily.get('precipitation_probability_max');
+        List<Object> codes    = (List<Object>) daily.get('weathercode');
+        
+        String wanted = String.valueOf(targetDate);   // "2026-06-23"
+        Integer idx = -1;
+        for (Integer i = 0; i < times.size(); i++) {
+            if (((String) times[i]) == wanted) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx == -1) {
+            throw new WeatherException('Date outside the 16-day window.');
+        }
+        
+        Forecast f = new Forecast();
+        f.latitude          = lat;
+        f.longitude         = lon;
+        f.forecastDate      = targetDate;
+        f.maxTemp           = toDecimal(maxTemps[idx]);
+        f.minTemp           = toDecimal(minTemps[idx]);
+        f.precipProbability = toInteger(precips[idx]);
+        f.weatherCode       = toInteger(codes[idx]);
+        f.summary           = describeCode(f.weatherCode);
+        f.riskLevel         = assessRisk(f.precipProbability, f.weatherCode, f.maxTemp);
+        return f;
     }
     
 }
