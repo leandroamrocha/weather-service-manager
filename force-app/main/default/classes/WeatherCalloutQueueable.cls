@@ -2,6 +2,7 @@ public class WeatherCalloutQueueable implements Queueable, Database.AllowsCallou
     private Set<Id> caseIds;
     public WeatherCalloutQueueable(Set<Id> caseIds) {
         this.caseIds = caseIds;
+    }
         
         public void execute(QueueableContext ctx) {
             List<Case> cases = [
@@ -32,4 +33,3 @@ public class WeatherCalloutQueueable implements Queueable, Database.AllowsCallou
             }
         }
     }
-}
