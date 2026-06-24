@@ -10,10 +10,10 @@ public with sharing class CaseWeatherHandler {
                 continue;
             }
             if (c.Visit_Date__c < Date.today()) {
-                continue;  // não adianta prever o passado
+                continue;
             }
             
-            Boolean changed = (oldMap == null);  // insert => sempre
+            Boolean changed = (oldMap == null);
             if (oldMap != null) {
                 Case old = oldMap.get(c.Id);
                 changed = (old.Visit_City__c != c.Visit_City__c)
