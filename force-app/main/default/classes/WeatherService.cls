@@ -86,6 +86,27 @@ public with sharing class WeatherService {
         return new Decimal[]{ lat, lon };
     }
     
+    public static Forecast getForecast(Decimal lat, Decimal lon, Date targetDate) {
+        
+        HttpRequest req = new HttpRequest();
+        req.setMethod('GET');
+        req.setTimeout(20000);
+        req.setEndpoint(
+            'callout:Open_Meteo_Forecast/v1/forecast'
+            + '?latitude=' + lat
+            + '&longitude=' + lon
+            + '&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode'
+            + '&timezone=America%2FSao_Paulo&forecast_days=16'
+            );
+        
+        HttpResponse res = new Http().send(req);
+        if (res.getStatusCode() != 200) {
+            throw new WeatherException('Forecast failed: ' + res.getStatusCode());
+        }
+        
+        return parseForecast(res.getBody(), lat, lon, targetDate);
+    }
+    
     @TestVisible
     private static Forecast parseForecast(String jsonBody, Decimal lat, Decimal lon, Date targetDate) {
         
@@ -120,6 +141,11 @@ public with sharing class WeatherService {
         f.summary           = describeCode(f.weatherCode);
         f.riskLevel         = assessRisk(f.precipProbability, f.weatherCode, f.maxTemp);
         return f;
+    }
+    
+    public static Forecast getForecastForCity(String city, Date targetDate) {
+        Decimal[] coords = getCoordinates(city);
+        return getForecast(coords[0], coords[1], targetDate);
     }
     
 }
