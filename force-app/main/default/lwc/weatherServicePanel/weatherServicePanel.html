@@ -11,6 +11,7 @@
                             <th>Cidade</th>
                             <th>Data</th>
                             <th>Risco</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -20,6 +21,13 @@
                                 <td>{v.Visit_City__c}</td>
                                 <td>{v.Visit_Date__c}</td>
                                 <td><span class={v.badgeClass}>{v.Weather_Risk__c}</span></td>
+                                <td>
+                                    <lightning-button label="Reavaliar" data-id={v.Id} onclick={handleReevaluate}>
+                                    </lightning-button>
+                                    <lightning-button label="Remarcar" data-id={v.Id} onclick={handleReschedule}
+                                        class="slds-var-m-left_x-small">
+                                    </lightning-button>
+                                </td>
                             </tr>
                         </template>
                     </tbody>
