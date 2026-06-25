@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Visitas e Clima" icon-name="standard:service_appointment">
+
+        <div class="slds-var-p-around_medium">
+
+            <template lwc:if={visits}>
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                        <tr>
+                            <th>Caso</th>
+                            <th>Cidade</th>
+                            <th>Data</th>
+                            <th>Risco</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={visits} for:item="v">
+                            <tr key={v.Id}>
+                                <td>{v.CaseNumber}</td>
+                                <td>{v.Visit_City__c}</td>
+                                <td>{v.Visit_Date__c}</td>
+                                <td>{v.Weather_Risk__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>
