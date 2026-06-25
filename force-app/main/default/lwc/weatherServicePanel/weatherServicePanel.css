@@ -1,0 +1,20 @@
+.risk-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    color: white;
+    font-size: 0.8rem;
+}
+.risk-high {
+    background-color: #ba0517;
+}
+.risk-medium {
+    background-color: #fe9339;
+}
+.risk-low {
+    background-color: #2e844a;
+}
+.risk-none {
+    background-color: #c9c7c5;
+}
